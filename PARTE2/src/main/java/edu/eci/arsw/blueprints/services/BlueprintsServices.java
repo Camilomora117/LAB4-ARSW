@@ -10,9 +10,13 @@ import edu.eci.arsw.blueprints.model.Point;
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
+
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+
+import edu.eci.arsw.blueprints.services.filter.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +29,10 @@ public class BlueprintsServices {
    
     @Autowired
     BlueprintsPersistence bpp = null;
-    
+
+    @Autowired
+    Filter filter;
+
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException {
         bpp.saveBlueprint(bp);
     }
@@ -42,7 +49,10 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if there is no such blueprint
      */
     public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
-        return bpp.getBlueprint(author,name);
+        Blueprint blueprint;
+        blueprint = bpp.getBlueprint(author, name);
+        blueprint =  filter.filterPoints(blueprint);
+        return blueprint;
     }
     
     /**
@@ -52,7 +62,13 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if the given author doesn't exist
      */
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
-        return bpp.getBlueprintsByAuthor(author);
+        Set<Blueprint> blueprints = bpp.getBlueprintsByAuthor(author);
+        Set<Blueprint> blueprintsWhitFilter = new HashSet<>();
+        for(Blueprint bp: blueprints){
+            bp = filter.filterPoints(bp);
+            blueprintsWhitFilter.add(bp);
+        }
+        return blueprintsWhitFilter;
     }
     
 }

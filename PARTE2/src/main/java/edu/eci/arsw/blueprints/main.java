@@ -34,7 +34,7 @@ public class main{
         //Get Blue Print
         serviceBluePrint.addNewBlueprint(new Blueprint("Diego", "thepaint#4", ptsbp));
         System.out.println("Metodo GET BLUE PRINT");
-        System.out.println(serviceBluePrint.getBlueprint("Yesid","thepaint#4"));
+        System.out.println(serviceBluePrint.getBlueprint("Diego","thepaint#4"));
 
         //Get Blue Prints by Author
         serviceBluePrint.addNewBlueprint(new Blueprint("Yesid", "thepaint#5", ptsbp));
@@ -45,6 +45,52 @@ public class main{
         System.out.println("get Por Autor: Yesid");
         for (Blueprint b: authorBP) {
             System.out.println(b);
+        }
+
+        //Get Blue print con filter Redundancy
+        System.out.println("Metodo GET BLUE PRINT CON FILTER REDUNDANCY");
+        Point[] ptsFilter = new Point[]{new Point(10, 11), new Point(11, 10), new Point(10,10)};
+        serviceBluePrint.addNewBlueprint(new Blueprint("Edgar", "thepaint#8", ptsFilter));
+        Blueprint blueprint1 = serviceBluePrint.getBlueprint("Edgar","thepaint#8");
+        for (Point p: blueprint1.getPoints()) {
+            System.out.println("Punto: " + p);
+        }
+
+        //Get Blue prins by author con filter Redundancy
+        System.out.println("Metodo GET BLUE PRINTS BY AUTHOR CON FILTER REDUNDANCY");
+        Point[] ptsFilter1 = new Point[]{new Point(10, 11), new Point(11, 10), new Point(11,10)};
+        Point[] ptsFilter2 = new Point[]{new Point(11, 10), new Point(11, 10), new Point(10,10)};
+        serviceBluePrint.addNewBlueprint(new Blueprint("Rozo", "thepaint#9", ptsFilter1));
+        serviceBluePrint.addNewBlueprint(new Blueprint("Rozo", "thepaint#10", ptsFilter2));
+        Set<Blueprint> setbp = serviceBluePrint.getBlueprintsByAuthor("Rozo");
+        for (Blueprint bp: setbp) {
+            System.out.println("Blue Print " + bp.getName());
+            for (Point p: bp.getPoints()) {
+                System.out.println("Punto: " + p);
+            }
+        }
+
+        //Get Blue print con filter UnderSampling
+        System.out.println("Metodo GET BLUE PRINT CON FILTER UnderSampling");
+        Point[] ptsFilterUS = new Point[]{new Point(12, 11), new Point(131, 10), new Point(14,10), new Point(10,10)};
+        serviceBluePrint.addNewBlueprint(new Blueprint("EdgarUS", "thepaintUS#8", ptsFilterUS));
+        Blueprint blueprint1US = serviceBluePrint.getBlueprint("EdgarUS","thepaintUS#8");
+        for (Point p: blueprint1US.getPoints()) {
+            System.out.println("Punto: " + p);
+        }
+
+        //Get Blue prins by author con filter UnderSampling
+        System.out.println("Metodo GET BLUE PRINTS BY AUTHOR CON FILTER UnderSampling");
+        Point[] ptsFilter1US = new Point[]{new Point(10, 11)};
+        Point[] ptsFilter2US = new Point[]{new Point(11, 10), new Point(10,10), new Point(10,11)};
+        serviceBluePrint.addNewBlueprint(new Blueprint("RozoUS", "thepaintUS#9", ptsFilter1US));
+        serviceBluePrint.addNewBlueprint(new Blueprint("RozoUS", "thepaintUS#10", ptsFilter2US));
+        Set<Blueprint> setbpUS = serviceBluePrint.getBlueprintsByAuthor("RozoUS");
+        for (Blueprint bp: setbpUS) {
+            System.out.println("Blue Print " + bp.getName());
+            for (Point p: bp.getPoints()) {
+                System.out.println("Punto: " + p);
+            }
         }
     }
 
