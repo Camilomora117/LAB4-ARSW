@@ -22,7 +22,14 @@ public interface BlueprintsPersistence {
      *    or any other low-level persistence error occurs.
      */
     public void saveBlueprint(Blueprint bp) throws BlueprintPersistenceException;
-    
+
+    /**
+     *
+     * @throws BlueprintPersistenceException if a blueprint with the same name already exists,
+     *    or any other low-level persistence error occurs.
+     */
+    public Set<Blueprint> getAllBlueprints() throws BlueprintPersistenceException;
+
     /**
      * 
      * @param author blueprint's author

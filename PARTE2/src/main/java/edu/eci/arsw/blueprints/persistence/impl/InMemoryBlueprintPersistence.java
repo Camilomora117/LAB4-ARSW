@@ -60,4 +60,8 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         return authorBlueprints;
     }
 
+    @Override
+    public Set<Blueprint> getAllBlueprints() throws BlueprintPersistenceException {
+        return new HashSet<Blueprint>(blueprints.values());
+    }
 }
