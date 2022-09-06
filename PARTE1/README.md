@@ -14,7 +14,8 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 
 * GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
 
-Como esa clase es un bean tenemos que colocarle la anotacion @Service
+Como esa clase es un bean tenemos que colocarle la anotacion @Service:
+
 ![image](https://user-images.githubusercontent.com/98135134/188659987-9425e114-1393-4493-a11d-97da672c949d.png)
 
 * EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
