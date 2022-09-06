@@ -1,8 +1,8 @@
-package edu.eci.arsw.blueprints.services.filter.impl;
+package edu.eci.arsw.blueprints.persistence.impl;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.services.filter.Filter;
+import edu.eci.arsw.blueprints.persistence.Filter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
