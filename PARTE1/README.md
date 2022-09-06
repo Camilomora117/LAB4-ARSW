@@ -12,12 +12,12 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 
 3. Haciendo uso de la [configuración de Spring basada en anotaciones](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-spring-beans-and-dependency-injection.html) marque con las anotaciones @Autowired y @Service las dependencias que deben inyectarse, y los 'beans' candidatos a ser inyectadas -respectivamente-:
 
-	* GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
+* GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
 
 Como esa clase es un bean tenemos que colocarle la anotacion @Service
 ![image](https://user-images.githubusercontent.com/98135134/188659987-9425e114-1393-4493-a11d-97da672c949d.png)
 
-	* EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
+* EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
 
 Como usaremos la verificacion en ingles, colocamos la etiqueta @service en esa clase
 ![image](https://user-images.githubusercontent.com/98135134/188660185-3a33646c-d873-4244-b872-faa6b4757f47.png)
