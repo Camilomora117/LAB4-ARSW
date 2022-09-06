@@ -12,8 +12,25 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 
 3. Haciendo uso de la [configuración de Spring basada en anotaciones](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-spring-beans-and-dependency-injection.html) marque con las anotaciones @Autowired y @Service las dependencias que deben inyectarse, y los 'beans' candidatos a ser inyectadas -respectivamente-:
 
+<<<<<<< HEAD
 	* GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
 	* EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
+=======
+* GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
+
+Como esa clase es un bean tenemos que colocarle la anotacion @Service:
+
+![image](https://user-images.githubusercontent.com/98135134/188659987-9425e114-1393-4493-a11d-97da672c949d.png)
+
+* EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
+
+Como usaremos la verificacion en ingles, colocamos la etiqueta @service en esa clase
+![image](https://user-images.githubusercontent.com/98135134/188660185-3a33646c-d873-4244-b872-faa6b4757f47.png)
+
+Verificamos que si este usando el verificador en ingles:
+![image](https://user-images.githubusercontent.com/98135134/188660600-14b3ebb2-d327-48a6-b1f1-6af641d0e316.png)
+
+>>>>>>> f5b6c30df07ebb0b3849071b44031aff98fcf4fc
  
 5.	Haga un programa de prueba, donde se cree una instancia de GrammarChecker mediante Spring, y se haga uso de la misma:
 
@@ -25,4 +42,11 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 	}
 	```
 	
+<<<<<<< HEAD
 6.	Modifique la configuración con anotaciones para que el Bean ‘GrammarChecker‘ ahora haga uso del  la clase SpanishSpellChecker (para que a GrammarChecker se le inyecte EnglishSpellChecker en lugar de  SpanishSpellChecker. Verifique el nuevo resultado.
+=======
+6.	Modifique la configuración con anotaciones para que el Bean ‘GrammarChecker‘ ahora haga uso del  la clase SpanishSpellChecker (para que a GrammarChecker se le inyecte EnglishSpellChecker en lugar de  SpanishSpellChecker. Verifique el nuevo resultado.
+
+Ahora nos muestra que estamos usando el verificador de Sintaxis en Español.
+![image](https://user-images.githubusercontent.com/98135134/188659737-70cdc158-b025-47e0-a2cd-0bfa5574e0eb.png)
+>>>>>>> f5b6c30df07ebb0b3849071b44031aff98fcf4fc
