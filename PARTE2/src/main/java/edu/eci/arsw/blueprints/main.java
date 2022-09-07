@@ -49,7 +49,7 @@ public class main{
 
         //Get Blue print con filter Redundancy
         System.out.println("Metodo GET BLUE PRINT CON FILTER REDUNDANCY");
-        Point[] ptsFilter = new Point[]{new Point(10, 11), new Point(11, 10), new Point(10,10)};
+        Point[] ptsFilter = new Point[]{new Point(10, 10), new Point(10, 10), new Point(10,10), new Point(10,10)};
         serviceBluePrint.addNewBlueprint(new Blueprint("Edgar", "thepaint#8", ptsFilter));
         Blueprint blueprint1 = serviceBluePrint.getBlueprint("Edgar","thepaint#8");
         for (Point p: blueprint1.getPoints()) {
